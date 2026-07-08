@@ -179,67 +179,7 @@
         <p class="footer-copy">&copy; 2026 PPDB Kota Batu. All Rights Reserved.</p>
     </footer>
 
-    <!-- TEMPELKAN KODE JAVASCRIPT BAGIAN 2 SEBELUM BARIS DI BAWAH INI -->
-    <!-- SKRIP SINKRONISASI MURNI BEBAS RESUBMISSION & ANTI-CORS -->
-    <script>
-        function kirimFormulirKeSheets() {
-            const submitBtn = document.getElementById('submit-btn');
-            
-            const nama = document.getElementById('nama').value.trim();
-            const nisn = document.getElementById('nisn').value.trim();
-            const gender = document.getElementById('gender').value;
-            const jalur = document.getElementById('jalur').value;
-            const whatsapp = document.getElementById('whatsapp').value.trim();
-            const setuju = document.getElementById('setuju').checked;
-
-            if (!nama || !nisn || !whatsapp) {
-                alert("Mohon lengkapi semua kolom pendaftaran yang tersedia!");
-                return;
-            }
-            if (!setuju) {
-                alert("Anda wajib menyetujui pernyataan kebenaran data!");
-                return;
-            }
-
-            submitBtn.disabled = true;
-            submitBtn.innerText = "Mengirim Data...";
-
-            // Memaketkan parameter data ke struktur URL Form-Encoded murni
-            const urlParams = new URLSearchParams();
-            urlParams.append('nama', nama);
-            urlParams.append('nisn', nisn);
-            urlParams.append('gender', gender);
-            urlParams.append('jalur', jalur);
-            urlParams.append('whatsapp', whatsapp);
-
-            // Tautan URL Google Web App Aktif Baru Milik Anda
-            const SCRIPT_URL = "https://google.com";
-
-            fetch(SCRIPT_URL, {
-                method: 'POST',
-                mode: 'no-cors', // Memaksa browser menembus batasan keamanan lokal CORS
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: urlParams
-            })
-            .then(() => {
-                alert('Pendaftaran Sukses! Data Anda telah berhasil terinput ke Google Sheets.');
-                
-                // Mereset isian kotak formulir kembali bersih
-                document.getElementById('nama').value = "";
-                document.getElementById('nisn').value = "";
-                document.getElementById('whatsapp').value = "";
-                document.getElementById('setuju').checked = false;
-                
-                submitBtn.disabled = false;
-                submitBtn.innerText = "Kirim Formulir Sekarang";
-            })
-            .catch(error => {
-                alert('Terjadi kendala jaringan sistem, silakan periksa internet Anda.');
-                submitBtn.disabled = false;
-                submitBtn.innerText = "Kirim Formulir Sekarang";
-            });
-        }
-    </script>
-
+    <!-- Menghubungkan ke logika JavaScript di Bagian 3 -->
+    <script src="script.js"></script>
 </body>
 </html>
