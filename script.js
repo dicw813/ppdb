@@ -1,68 +1,107 @@
-// URL Web App Google Apps Script terbaru Anda yang sudah diperbaiki ujungnya
-const scriptURL = 'https://google.com';
+// 1. EFEK TRANSISI HEADER SAAT DI-SCROLL
+window.addEventListener('scroll', function() {
+    const header = document.querySelector('header');
+    if (header) {
+        if (window.scrollY > 50) {
+            header.classList.add('header-scrolled');
+        } else {
+            header.classList.remove('header-scrolled');
+        }
+    }
+});
 
-function kirimFormulirKeSheets() {
-    // 1. Mengambil data dari elemen input HTML berdasarkan ID masing-masing
-    const nama = document.getElementById('nama').value.trim();
-    const nisn = document.getElementById('nisn').value.trim();
-    const gender = document.getElementById('gender').value;
-    const jalur = document.getElementById('jalur').value;
-    const whatsapp = document.getElementById('whatsapp').value.trim();
-    const setuju = document.getElementById('setuju').checked;
-    const submitBtn = document.getElementById('submit-btn');
+// 2. LOGIKA UTAMA MENU MOBILE & DETEKSI KLIK LUAR AREA
+document.addEventListener("DOMContentLoaded", function() {
+    const menuToggle = document.getElementById('mobile-menu');
+    const navMenu = document.querySelector('header nav');
 
-    // 2. Validasi Isian Kosong
-    if (!nama || !nisn || !whatsapp) {
-        alert('❌ Mohon lengkapi semua kolom data yang tersedia!');
-        return;
+    if (menuToggle && navMenu) {
+        // Event buka/tutup menu saat tombol hamburger diklik
+        menuToggle.addEventListener('click', function(e) {
+            e.stopPropagation(); // Menahan gelembung event klik
+            menuToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Otomatis tutup menu jika link di dalam menu navigasi diklik
+        const navLinks = document.querySelectorAll('header nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // FIX DETEKSI KLIK AREA LUAR (VARIABEL SINKRON)
+        document.addEventListener('click', function(event) {
+            const diDalamMenu = navMenu.contains(event.target);
+            const diDalamTombol = menuToggle.contains(event.target);
+            
+            if (navMenu.classList.contains('active') && !diDalamMenu && !diDalamTombol) {
+                menuToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            }
+        });
     }
 
-    // 3. Validasi Panjang Angka NISN (Wajib 10 Digit)
-    if (nisn.length !== 10) {
-        alert('❌ NISN harus berjumlah tepat 10 digit angka!');
-        return;
+    // 3. LOGIKA SLIDER BANNER HERO
+    const slides = document.querySelectorAll('.hero-slider .slide');
+    const dots = document.querySelectorAll('.slider-dots .dot');
+    const prevBtn = document.querySelector('.prev-btn');
+    const nextBtn = document.querySelector('.next-btn');
+    
+    // Pengaman: Jika halaman tidak memiliki slider (seperti halaman tentang/layanan), hentikan fungsi slider di bawah
+    if (slides.length === 0) return;
+
+    let currentSlide = 0;
+    const slideInterval = 5000;
+    let sliderTimer = setInterval(handleNextSlide, slideInterval);
+
+    function updateSliderDisplay() {
+        slides.forEach((slide, index) => {
+            slide.classList.toggle('active', index === currentSlide);
+        });
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentSlide);
+        });
     }
 
-    // 4. Validasi Centang Kotak Persetujuan
-    if (!setuju) {
-        alert('❌ Anda harus mencentang persetujuan kebenaran data untuk melanjutkan.');
-        return;
+    function handleNextSlide() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        updateSliderDisplay();
     }
 
-    // 5. Ubah Tombol Menjadi Status Memuat (Loading State)
-    submitBtn.disabled = true;
-    submitBtn.innerText = '⏳ Sedang Mengirim Data...';
+    function handlePrevSlide() {
+        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        updateSliderDisplay();
+    }
 
-    // 6. Menyusun Objek Data dalam Format JSON
-    const dataPendaftar = {
-        nama: nama,
-        nisn: nisn,
-        gender: gender,
-        jalur: jalur,
-        whatsapp: whatsapp
-    };
+    function resetTimer() {
+        clearInterval(sliderTimer);
+        sliderTimer = setInterval(handleNextSlide, slideInterval);
+    }
 
-    // 7. Mengirimkan Data ke Google Sheets Melalui Fetch API
-    fetch(scriptURL, {
-        method: 'POST',
-        mode: 'no-cors', // Mode khusus untuk menghindari kendala kebijakan CORS Google
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(dataPendaftar)
-    })
-    .then(() => {
-        // Notifikasi sukses ketika pengiriman data selesai tanpa kendala jaringan
-        alert('🎉 Selamat! Data pendaftaran awal PPDB Anda berhasil tersimpan di sistem.');
-        document.getElementById('ppdb-form').reset(); // Mengosongkan kembali seluruh isi form
-    })
-    .catch(error => {
-        console.error('Error pengiriman formulir:', error.message);
-        alert('❌ Gagal mengirim data. Silakan periksa koneksi internet Anda atau muat ulang halaman.');
-    })
-    .finally(() => {
-        // 8. Mengembalikan Tombol ke Status Normal Setelah Selesai Proses
-        submitBtn.disabled = false;
-        submitBtn.innerText = 'Kirim Formulir Sekarang';
-    });
-}
+    if (nextBtn) {
+        nextBtn.addEventListener('click', function() {
+            handleNextSlide();
+            resetTimer();
+        });
+    }
+
+    if (prevBtn) {
+        prevBtn.addEventListener('click', function() {
+            handlePrevSlide();
+            resetTimer();
+        });
+    }
+
+    if (dots.length > 0) {
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', function() {
+                currentSlide = index;
+                updateSliderDisplay();
+                resetTimer();
+            });
+        });
+    }
+});
