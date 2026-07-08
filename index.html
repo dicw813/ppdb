@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PPDB Kota Batu 2026/2027 | Pendaftaran Siswa Baru</title>
+    <!-- Menghubungkan ke file style.css di folder yang sama -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- HEADER UTAMA -->
+    <header class="hero-header">
+        <div class="header-container">
+            <span class="hero-tag">Tahun Ajaran 2026/2027</span>
+            <h1 class="hero-title">Pendaftaran Siswa Baru Kota Batu</h1>
+            <p class="hero-subtitle">Proses seleksi kini jauh lebih mudah dan aman dengan sistem 100% online dari rumah.</p>
+        </div>
+    </header>
+
+    <!-- LAYOUT UTAMA 2 BAGIAN -->
+    <main class="main-container">
+        
+        <!-- KOLOM KIRI: INFORMASI SEKOLAH -->
+        <div class="left-column">
+            
+            <!-- Keunggulan -->
+            <section class="card-box">
+                <h2 class="section-title">⭐ Mengapa Memilih Kami?</h2>
+                <div class="grid-2-col">
+                    <div class="info-item">
+                        <span class="info-icon">🏆</span>
+                        <div>
+                            <h3>Akreditasi A</h3>
+                            <p>Kurikulum nasional terintegrasi dengan pengembangan karakter terbaik.</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">🏫</span>
+                        <div>
+                            <h3>Fasilitas Modern</h3>
+                            <p>Laboratorium lengkap, perpustakaan digital, & ruang kelas multimedia.</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">⛰️</span>
+                        <div>
+                            <h3>Lingkungan Asri</h3>
+                            <p>Suasana Kota Batu yang sejuk mendukung konsentrasi belajar maksimal.</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">🥇</span>
+                        <div>
+                            <h3>Prestasi Hebat</h3>
+                            <p>Rekam jejak juara kompetisi sains, seni, hingga olahraga daerah.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Jadwal Jalur -->
+            <section class="card-box">
+                <h2 class="section-title">📅 Jadwal & Jalur Seleksi</h2>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Jalur</th>
+                                <th style="text-align: center;">Kuota</th>
+                                <th>Tanggal</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="font-bold">Afirmasi & Tugas Ortu</td>
+                                <td style="text-align: center;">20%</td>
+                                <td>1 - 5 Juni 2026</td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold">Prestasi Akademik/Non</td>
+                                <td style="text-align: center;">30%</td>
+                                <td>8 - 12 Juni 2026</td>
+                            </tr>
+                            <tr>
+                                <td class="font-bold">Zonasi Kota Batu</td>
+                                <td style="text-align: center;">50%</td>
+                                <td>15 - 20 Juni 2026</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Info Syarat & Alur -->
+            <div class="grid-2-col">
+                <div class="card-box no-margin">
+                    <h3 class="sub-title">📝 Syarat Berkas</h3>
+                    <ul class="list-styled">
+                        <li><span>✓</span> Akte Kelahiran Asli</li>
+                        <li><span>✓</span> KK Wilayah Kota Batu</li>
+                        <li><span>✓</span> Ijazah / SKL Terakhir</li>
+                        <li><span>✓</span> Pas Foto Terbaru 3x4</li>
+                    </ul>
+                </div>
+                <div class="card-box no-margin">
+                    <h3 class="sub-title">🛠️ Alur Online</h3>
+                    <ol class="list-numbered">
+                        <li>Buat Akun PPDB Baru</li>
+                        <li>Isi Lengkap Biodata</li>
+                        <li>Unggah Berkas Scan</li>
+                        <li>Pantau Hasil Kelulusan</li>
+                    </ol>
+                </div>
+            </div>
+
+        </div> 
+
+        <!-- KOLOM KANAN: FORMULIR STICKY -->
+        <div class="right-column sticky-column">
+            <div class="form-box">
+                <div class="form-header">
+                    <h2>Formulir Pendaftaran</h2>
+                    <p>Lengkapi data awal calon siswa secara akurat untuk verifikasi berkas tahap pertama.</p>
+                </div>
+                
+                <form id="ppdb-form" onsubmit="return false;">
+                    <div class="form-group">
+                        <label>Nama Lengkap Siswa</label>
+                        <input type="text" id="nama" placeholder="Contoh: Budi Santoso">
+                    </div>
+
+                    <div class="grid-2-col gap-small">
+                        <div class="form-group">
+                            <label>NISN</label>
+                            <input type="number" id="nisn" placeholder="10 Digit Angka">
+                        </div>
+                        <div class="form-group">
+                            <label>Jenis Kelamin</label>
+                            <select id="gender">
+                                <option value="Laki-laki">Laki-laki</option>
+                                <option value="Perempuan">Perempuan</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Jalur Seleksi</label>
+                        <select id="jalur">
+                            <option value="Zonasi Domisili Kota Batu">Zonasi Domisili Kota Batu</option>
+                            <option value="Prestasi Akademik">Prestasi Akademik</option>
+                            <option value="Afirmasi (Kurang Mampu)">Afirmasi (Kurang Mampu)</option>
+                            <option value="Perpindahan Orang Tua">Perpindahan Orang Tua</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>No. WhatsApp Orang Tua</label>
+                        <input type="tel" id="whatsapp" placeholder="Contoh: 081234567xxx">
+                    </div>
+
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="setuju">
+                        <label for="setuju" class="label-inline">Saya menyatakan data yang diisikan benar.</label>
+                    </div>
+
+                    <button type="button" class="btn-submit" id="submit-btn" onclick="kirimFormulirKeSheets()">Kirim Formulir Sekarang</button>
+                </form> 
+
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER SEKOLAH -->
+    <footer class="main-footer">
+        <p class="footer-bold">Sekretariat Bersama PPDB Dinas Pendidikan Kota Batu</p>
+        <p>📍 Jl. Panglima Sudirman, Kota Batu, Jawa Timur | 📧 Email: ppdb@batukota.go.id</p>
+        <p class="footer-copy">&copy; 2026 PPDB Kota Batu. All Rights Reserved.</p>
+    </footer>
+
+    <!-- TEMPELKAN KODE JAVASCRIPT BAGIAN 2 SEBELUM BARIS DI BAWAH INI -->
+    <!-- SKRIP SINKRONISASI MURNI BEBAS RESUBMISSION & ANTI-CORS -->
+    <script>
+        function kirimFormulirKeSheets() {
+            const submitBtn = document.getElementById('submit-btn');
+            
+            const nama = document.getElementById('nama').value.trim();
+            const nisn = document.getElementById('nisn').value.trim();
+            const gender = document.getElementById('gender').value;
+            const jalur = document.getElementById('jalur').value;
+            const whatsapp = document.getElementById('whatsapp').value.trim();
+            const setuju = document.getElementById('setuju').checked;
+
+            if (!nama || !nisn || !whatsapp) {
+                alert("Mohon lengkapi semua kolom pendaftaran yang tersedia!");
+                return;
+            }
+            if (!setuju) {
+                alert("Anda wajib menyetujui pernyataan kebenaran data!");
+                return;
+            }
+
+            submitBtn.disabled = true;
+            submitBtn.innerText = "Mengirim Data...";
+
+            // Memaketkan parameter data ke struktur URL Form-Encoded murni
+            const urlParams = new URLSearchParams();
+            urlParams.append('nama', nama);
+            urlParams.append('nisn', nisn);
+            urlParams.append('gender', gender);
+            urlParams.append('jalur', jalur);
+            urlParams.append('whatsapp', whatsapp);
+
+            // Tautan URL Google Web App Aktif Baru Milik Anda
+            const SCRIPT_URL = "https://google.com";
+
+            fetch(SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors', // Memaksa browser menembus batasan keamanan lokal CORS
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: urlParams
+            })
+            .then(() => {
+                alert('Pendaftaran Sukses! Data Anda telah berhasil terinput ke Google Sheets.');
+                
+                // Mereset isian kotak formulir kembali bersih
+                document.getElementById('nama').value = "";
+                document.getElementById('nisn').value = "";
+                document.getElementById('whatsapp').value = "";
+                document.getElementById('setuju').checked = false;
+                
+                submitBtn.disabled = false;
+                submitBtn.innerText = "Kirim Formulir Sekarang";
+            })
+            .catch(error => {
+                alert('Terjadi kendala jaringan sistem, silakan periksa internet Anda.');
+                submitBtn.disabled = false;
+                submitBtn.innerText = "Kirim Formulir Sekarang";
+            });
+        }
+    </script>
+
+</body>
+</html>
