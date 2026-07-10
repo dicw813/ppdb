@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Berita & Pengumuman - Dindik Kota Batu</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                <img src="kotabatu.png" alt="Logo Kota Batu">
+                <div class="logo-title">
+                    <span class="text-top">Dinas Pendidikan</span>
+                    <span class="text-bottom">Kota Batu</span>
+                </div>
+            </a>
+        </div>
+        
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        
+        <nav>
+            <a href="index.html">Beranda</a>
+            <a href="tentang.html">Tentang Kami</a>
+            <a href="layanan.html">Layanan</a>
+            <a href="berita.html" class="active">Berita</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="services-section">
+            <div class="services-container">
+                <div class="services-header">
+                    <h2>Berita & Pengumuman</h2>
+                    <p>Informasi terbaru seputar kebijakan, prestasi, dan agenda pendidikan di Kota Wisata Batu.</p>
+                </div>
+
+                <div class="category-filter">
+                    <button class="filter-btn active" data-target="all">Semua</button>
+                    <button class="filter-btn" data-target="berita">Berita Terbaru</button>
+                    <button class="filter-btn" data-target="pengumuman">Pengumuman</button>
+                    <button class="filter-btn" data-target="prestasi">Prestasi</button>
+                </div>
+                
+                <div class="services-grid">
+                    
+                    <div class="news-card-wrapper" data-category="berita">
+                        <article class="news-card">
+                            <div class="news-image" style="background-image: url('images/berita1.jpg');"></div>
+                            <div class="news-body">
+                                <div class="news-meta">
+                                    <span>📅 09 Juli 2026</span>
+                                    <span>👤 Admin Dindik</span>
+                                </div>
+                                <h3>Peningkatan Kompetensi Guru SD Melalui Workshop Digitalisasi Pembelajaran</h3>
+                                <p>Dinas Pendidikan Kota Batu menggelar pelatihan intensif guna membekali tenaga pendidik dengan metode pembelajaran berbasis multimedia modern.</p>
+                                <a href="detail-berita.html" class="news-link">Baca Selengkapnya ➔</a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="news-card-wrapper" data-category="pengumuman">
+                        <article class="news-card">
+                            <div class="news-image" style="background-image: url('images/berita2.jpg');"></div>
+                            <div class="news-body">
+                                <div class="news-meta">
+                                    <span>📅 05 Juli 2026</span>
+                                    <span>📢 Bidang Persekolahan</span>
+                                </div>
+                                <h3>Informasi Verifikasi Berkas Fisik PPDB Online Jenjang SMP Tahun Ajaran 2026/2027</h3>
+                                <p>Bagi calon peserta didik yang telah mendaftar dijalur zonasi, diharap segera melakukan penyerahan berkas verifikasi di sekolah tujuan.</p>
+                                <a href="detail-berita.html" class="news-link">Baca Selengkapnya ➔</a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <div class="news-card-wrapper" data-category="prestasi">
+                        <article class="news-card">
+                            <div class="news-image" style="background-image: url('images/berita3.jpg');"></div>
+                            <div class="news-body">
+                                <div class="news-meta">
+                                    <span>📅 28 Juni 2026</span>
+                                    <span>🏆 Seksi Kesiswaan</span>
+                                </div>
+                                <h3>Siswa SMP Kota Batu Raih Medali Emas di Olimpiade Sains Nasional</h3>
+                                <p>Prestasi membanggakan kembali diukir oleh pelajar asal Kota Batu dalam ajang bergengsi tingkat nasional bidang studi Matematika.</p>
+                                <a href="detail-berita.html" class="news-link">Baca Selengkapnya ➔</a>
+                            </div>
+                        </article>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-main">
+            <div class="footer-column footer-brand">
+                <h3>Dinas Pendidikan Kota Batu</h3>
+                <p>Meningkatkan mutu pelayanan pendidikan demi masa depan generasi bangsa yang cerdas dan berkarakter.</p>
+            </div>
+            <div class="footer-column footer-links">
+                <h4>Navigasi</h4>
+                <a href="index.html">Beranda</a>
+                <a href="tentang.html">Tentang Kami</a>
+                <a href="layanan.html">Layanan Publik</a>
+                <a href="berita.html">Berita & Pengumuman</a>
+            </div>
+            <div class="footer-column footer-contact-info">
+                <h4>Hubungi Kami</h4>
+                <p>📍 Jl. Panglima Sudirman No. 507, Kota Batu, Jawa Timur</p>
+                <p>📞 (0341) 591143</p>
+                <p>✉️ disdik@kotabatu.go.id</p>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <p>&copy; 2026 Dinas Pendidikan Kota Batu. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const newsItems = document.querySelectorAll('.news-card-wrapper');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+
+                    const target = button.getAttribute('data-target');
+                    newsItems.forEach(item => {
+                        const category = item.getAttribute('data-category');
+                        if (target === 'all' || category === target) {
+                            item.classList.remove('hide');
+                        } else {
+                            item.classList.add('hide');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
